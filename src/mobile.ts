@@ -19,6 +19,10 @@ export function calculateMobileBill(
   domesticMinutes: number,
   internationalMinutes: number,
 ): number {
+  if (domesticMinutes < 0 || internationalMinutes < 0) {
+    throw new Error('INVALID_DURATION');
+  }
+
   return (
     MONTHLY_SUBSCRIPTION_FEE +
     calculateDomesticOverageFee(domesticMinutes) +
