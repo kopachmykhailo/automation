@@ -15,13 +15,20 @@ function calculateInternationalFee(internationalMinutes: number): number {
   return internationalMinutes * INTERNATIONAL_MINUTE_RATE;
 }
 
+function validateMinutes(
+  domesticMinutes: number,
+  internationalMinutes: number,
+): void {
+  if (domesticMinutes < 0 || internationalMinutes < 0) {
+    throw new Error('INVALID_DURATION');
+  }
+}
+
 export function calculateMobileBill(
   domesticMinutes: number,
   internationalMinutes: number,
 ): number {
-  if (domesticMinutes < 0 || internationalMinutes < 0) {
-    throw new Error('INVALID_DURATION');
-  }
+  validateMinutes(domesticMinutes, internationalMinutes);
 
   return (
     MONTHLY_SUBSCRIPTION_FEE +
