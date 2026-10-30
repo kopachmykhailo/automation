@@ -8,12 +8,16 @@ describe('calculateMobileBill', () => {
   });
 
   it.each([
+    [99, 150],
     [100, 150],
     [101, 150.5],
     [102, 151],
-  ])('calculates the domestic threshold at %i minutes', (minutes, expected) => {
-    expect(calculateMobileBill(minutes, 0)).toBe(expected);
-  });
+  ])(
+    'calculates the domestic threshold at %i minutes',
+    (minutes, expected) => {
+      expect(calculateMobileBill(minutes, 0)).toBe(expected);
+    },
+  );
 
   it.each([
     [0, 1, 153],
@@ -31,9 +35,12 @@ describe('calculateMobileBill', () => {
   it.each([
     [-1, 0],
     [0, -1],
-  ])('rejects negative usage (%i, %i)', (domesticMinutes, internationalMinutes) => {
-    expect(() =>
-      calculateMobileBill(domesticMinutes, internationalMinutes),
-    ).toThrow('INVALID_DURATION');
-  });
+  ])(
+    'rejects negative usage (%i, %i)',
+    (domesticMinutes, internationalMinutes) => {
+      expect(() =>
+        calculateMobileBill(domesticMinutes, internationalMinutes),
+      ).toThrow('INVALID_DURATION');
+    },
+  );
 });
