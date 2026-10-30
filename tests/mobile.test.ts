@@ -22,4 +22,17 @@ describe('calculateMobileBill', () => {
   it('charges three hryvnias for one international minute', () => {
     expect(calculateMobileBill(0, 1)).toBe(153);
   });
+
+  it.each([
+    [0, 1, 153],
+    [0, 2, 156],
+    [101, 2, 156.5],
+  ])(
+    'calculates %i domestic and %i international minutes',
+    (domesticMinutes, internationalMinutes, expected) => {
+      expect(calculateMobileBill(domesticMinutes, internationalMinutes)).toBe(
+        expected,
+      );
+    },
+  );
 });
