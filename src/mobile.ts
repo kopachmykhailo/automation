@@ -12,7 +12,7 @@ function calculateDomesticOverageFee(domesticMinutes: number): number {
 }
 
 function calculateInternationalFee(internationalMinutes: number): number {
-  return internationalMinutes > 0 ? INTERNATIONAL_MINUTE_RATE : 0;
+  return internationalMinutes * INTERNATIONAL_MINUTE_RATE;
 }
 
 export function calculateMobileBill(
