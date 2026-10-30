@@ -27,4 +27,13 @@ describe('calculateMobileBill', () => {
       );
     },
   );
+
+  it.each([
+    [-1, 0],
+    [0, -1],
+  ])('rejects negative usage (%i, %i)', (domesticMinutes, internationalMinutes) => {
+    expect(() =>
+      calculateMobileBill(domesticMinutes, internationalMinutes),
+    ).toThrow('INVALID_DURATION');
+  });
 });
