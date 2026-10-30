@@ -7,20 +7,12 @@ describe('calculateMobileBill', () => {
     expect(calculateMobileBill(0, 0)).toBe(150);
   });
 
-  it('charges for the first domestic minute after the included allowance', () => {
-    expect(calculateMobileBill(101, 0)).toBe(150.5);
-  });
-
   it.each([
     [100, 150],
     [101, 150.5],
     [102, 151],
   ])('calculates the domestic threshold at %i minutes', (minutes, expected) => {
     expect(calculateMobileBill(minutes, 0)).toBe(expected);
-  });
-
-  it('charges three hryvnias for one international minute', () => {
-    expect(calculateMobileBill(0, 1)).toBe(153);
   });
 
   it.each([
