@@ -6,4 +6,8 @@ describe('calculateMobileBill', () => {
   it('charges the monthly subscription when there is no usage', () => {
     expect(calculateMobileBill(0, 0)).toBe(150);
   });
+
+  it('charges for the first domestic minute after the included allowance', () => {
+    expect(calculateMobileBill(101, 0)).toBe(150.5);
+  });
 });
