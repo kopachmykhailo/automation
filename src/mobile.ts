@@ -4,5 +4,6 @@ export function calculateMobileBill(
   domesticMinutes: number,
   internationalMinutes: number,
 ): number {
-  return MONTHLY_SUBSCRIPTION_FEE;
+  const domesticOverageFee = domesticMinutes > 100 ? 0.5 : 0;
+  return MONTHLY_SUBSCRIPTION_FEE + domesticOverageFee;
 }
