@@ -18,4 +18,8 @@ describe('calculateMobileBill', () => {
   ])('calculates the domestic threshold at %i minutes', (minutes, expected) => {
     expect(calculateMobileBill(minutes, 0)).toBe(expected);
   });
+
+  it('charges three hryvnias for one international minute', () => {
+    expect(calculateMobileBill(0, 1)).toBe(153);
+  });
 });
