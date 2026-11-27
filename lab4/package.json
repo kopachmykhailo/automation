@@ -1,0 +1,15 @@
+{
+  "name": "lab4-playwright",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "test": "playwright test",
+    "test:ui": "playwright test --ui",
+    "test:variant8": "playwright test tests/checkout-variant8.spec.ts"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.65.1",
+    "@types/node": "^26.6.11",
+    "typescript": "^5.9.3"
+  }
+}
